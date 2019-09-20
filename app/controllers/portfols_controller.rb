@@ -18,4 +18,18 @@ class PortfolsController < ApplicationController
 			end
 		end
 	end
+
+	def edit
+		@portfol = Portfol.find(params[:id])
+	end
+
+	def update
+		respond_to do |format|
+			if @portfol.update(params.require(:portfol).permit(:title, :subtitle, :body))
+				format.html { redirect_to portfols_path, notice: "Portfolio Edited Succesfully." }
+			else
+				format.html { redirect_to :edit }
+			end
+		end
+	end
 end
