@@ -32,4 +32,16 @@ class PortfolsController < ApplicationController
 			end
 		end
 	end
+
+	def show
+		@portfol = Portfol.find(params[:id])
+	end
+
+	def destroy
+		@portfol = Portfol.find(params[:id])
+		@portfol.destroy
+		respond_to do |format|
+			format.html { redirect_to portfols_path, notice: "Portfolio Deleted" }
+		end
+	end
 end
