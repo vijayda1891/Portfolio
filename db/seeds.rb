@@ -46,4 +46,10 @@ end
 		)
 end
 
+3.times do |technology|
+	Portfol.last.technologies.create!(
+		name: "Technology #{technology}"
+		)
+end
+
 

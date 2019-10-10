@@ -6,6 +6,7 @@ class PortfolsController < ApplicationController
 
 	def new
 		@portfol = Portfol.new
+		@portfol.technologies.build
 	end
 
 	def create
