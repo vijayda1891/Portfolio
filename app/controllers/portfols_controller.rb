@@ -6,6 +6,7 @@ class PortfolsController < ApplicationController
 
 	def new
 		@portfol = Portfol.new
+		@portfol.technologies.build
 	end
 
 	def create
@@ -25,7 +26,7 @@ class PortfolsController < ApplicationController
 
 	def update
 		respond_to do |format|
-			if @portfol.update(params.require(:portfol).permit(:title, :subtitle, :body))
+			if @portfol.update(params.require(:portfol).permit(:title, :subtitle, :body, :technologies_attributes[:name]))
 				format.html { redirect_to portfols_path, notice: "Portfolio Edited Succesfully." }
 			else
 				format.html { redirect_to :edit }
