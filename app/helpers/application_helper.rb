@@ -8,4 +8,11 @@ module ApplicationHelper
      	(link_to "Login", new_user_session_path) 
      end 
 	end
+
+	def source_helper(layout_name)
+		if session[:source]
+    		text = "Thanks for Visiting us from #{session[:source]} and you are on the #{layout_name} layout"
+    		content_tag(:p, text, class: "source_text") 
+     	end
+	end
 end
