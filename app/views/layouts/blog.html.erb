@@ -5,7 +5,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -13,12 +13,13 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <%= render "shared/nav", location: 'top' %>
-
     <%= login_helper %>
 
     <%= yield %>
 
-    <%= source_helper("application") %>
+
+    <%= render "shared/nav", location: 'bottom' %>
+
+    <%= source_helper("blog") %>
   </body>
 </html>
