@@ -15,4 +15,8 @@ module ApplicationHelper
     		content_tag(:p, text, class: "source_text") 
      	end
 	end
+
+    def copyright_generator
+        DavijayViewTool::Renderer.copyright 'DA Vijay', 'Rights Reserved'
+    end
 end
