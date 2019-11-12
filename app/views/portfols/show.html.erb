@@ -1,11 +1,16 @@
-<h1><%= @portfol.title %></h1>
-<em><%= @portfol.subtitle %></em>
-<div>
-<%= image_tag @portfol.main_image %>
+<div class="container">
+	<div class="row">
+		<div class= "col-md-7">
+			<%= image_tag @portfol.main_image %>
+		</div>
+		<div class="col-md-5">
+			<h1><%= @portfol.title %></h1>
+			<em><%= @portfol.subtitle %></em>
+			<p><%= @portfol.body %></p>
+			<h3>Technologies used: </h3>
+			<% @portfol.technologies.each do |tecnology| %>
+			<p><%= technology.name %></p>
+			<% end %>
+		</div>
+	</div>
 </div>
-<p><%= @portfol.body %></p>
-
-<h2>Technologies used: </h2>
-<% @portfol.technologies.each do |tecnology| %>
-<p><%= technology.name %></p>
-<% end %>
