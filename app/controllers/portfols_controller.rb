@@ -1,10 +1,18 @@
 class PortfolsController < ApplicationController
-
+	skip_before_action :verify_authenticity_token
 	layout "portfol"
-	access all: [:show, :index], user: {except: [:destroy, :new, :create, :edit, :update]}, site_admin: :all
+	access all: [:show, :index], user: {except: [:destroy, :new, :create, :edit, :update, :sort]}, site_admin: :all
 
 	def index
-		@portfolio_items = Portfol.all
+		@portfolio_items = Portfol.by_position
+	end
+
+	def sort
+		params[:order].each do |key, value|
+			Portfol.find(value[:id]).update(position: value[:position])
+		end
+
+		render body: nil
 	end
 
 	def new
