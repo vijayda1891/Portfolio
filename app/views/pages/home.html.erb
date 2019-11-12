@@ -1,2 +1,9 @@
-<h1>Hi, <%= current_user.first_name if current_user %></h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<main role="main" class="inner cover">
+<h1 class="cover-heading"> Welcome To My Application </h1>
+<p class="lead"> Communication is a key skill for an software developer, explaining what can be done, what has been done and what should be done!</p>
+<p class="lead">
+  <%= link_to "Know More", about_path, class: "btn btn-lg btn-secondary" %>
+</p>
+</main>
+
+
