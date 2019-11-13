@@ -61,6 +61,12 @@ class PortfolsController < ApplicationController
 	private
 
 	def portfol_params
-		params.require(:portfol).permit(:title, :subtitle, :body, :technologies_attributes[:name])
+		params.require(:portfol).permit(:title,
+										:subtitle, 
+										:body, 
+										:main_image, 
+										:thumb_image, 
+										technologies_attributes: [:name]
+									    )
 	end
 end
