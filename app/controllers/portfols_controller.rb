@@ -25,8 +25,10 @@ class PortfolsController < ApplicationController
 		respond_to do |format|
 			if @portfol.save
 				format.html { redirect_to portfols_path, notice: "Portfolio created." }
+				format.json { render :index, status: :created, location: @portfol }
 			else
-				format.html { redirect_to :new }
+				format.html { render :new }
+				format.json { render json: @portfol.errors, status: :unprocessable_entity }
 			end
 		end
 	end
