@@ -17,7 +17,7 @@ class PortfolsController < ApplicationController
 
 	def new
 		@portfol = Portfol.new
-		@portfol.technologies.build
+		# @portfol.technologies.build
 	end
 
 	def create
@@ -25,8 +25,10 @@ class PortfolsController < ApplicationController
 		respond_to do |format|
 			if @portfol.save
 				format.html { redirect_to portfols_path, notice: "Portfolio created." }
+				format.json { render :index, status: :created, location: @portfol }
 			else
-				format.html { redirect_to :new }
+				format.html { render :new }
+				format.json { render json: @portfol.errors, status: :unprocessable_entity }
 			end
 		end
 	end
@@ -36,6 +38,7 @@ class PortfolsController < ApplicationController
 	end
 
 	def update
+		@portfol = Portfol.find(params[:id])
 		respond_to do |format|
 			if @portfol.update(portfol_params)
 				format.html { redirect_to portfols_path, notice: "Portfolio Edited Succesfully." }
@@ -66,7 +69,7 @@ class PortfolsController < ApplicationController
 										:body, 
 										:main_image, 
 										:thumb_image, 
-										technologies_attributes: [:name]
+										technologies_attributes: [:id, :name, :_destroy]
 									    )
 	end
 end

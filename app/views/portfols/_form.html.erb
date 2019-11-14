@@ -1,4 +1,9 @@
 <%= form_for(@portfol) do |f| %>
+	<% if @portfol.errors.any? %>
+	    <% @portfol.errors.full_messages.each do |error| %>
+	      <%= alert_generator error %>
+	    <% end %>
+	<% end %>
 <div class="row">
 	<div class="col-md-6">
 		<div class="form-group">
@@ -34,11 +39,11 @@
 		<h4>Technologies used :</h4>
 		<div>
 			<%= f.fields_for :technologies do |tech| %>
-			<div class="form-group">
-				<%= tech.label :name %>
-				<%= tech.text_field :name, class: "form-control" %>
-			</div>
+				<%= render 'technology_fields', f: tech %>
 			<% end %>
+			<div>
+				<%= link_to_add_association 'Add Technology', f, :technologies %>
+			</div>
 		</div>
 		<div class="form-group">
 			<%= f.submit "Save", class: "btn btn-primary" %>
