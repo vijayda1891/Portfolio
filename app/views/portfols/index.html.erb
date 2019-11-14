@@ -1,5 +1,9 @@
 <div class="album py-5 bg-light portfolio_form">
 	<div class="container">
+		<% if logged_in?(:site_admin) %>
+		<center><%= link_to 'Add New Portfolio', new_portfol_path, class: "btn btn-primary" %></center>
+		<hr>
+		<% end %>
 	  	<div class="row <%= "sortable" if logged_in?(:site_admin)%>">
 				<%#= link_to "Create New", new_portfol_url if logged_in?(:site_admin) %>
 				<%= render partial: "portfolio_item", collection: @portfolio_items %>
