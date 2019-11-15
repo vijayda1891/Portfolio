@@ -119,6 +119,7 @@ h1, h2, h3, h4, h5, h6 {
  */
 
 .blog-footer {
+  margin-top: 20px;
   padding: 2.5rem 0;
   color: #999;
   text-align: center;
@@ -139,4 +140,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .blog_nav span{
   margin-top: 8px;
+}
+
+
+.comment-card > .card {
+  margin-top: 15px;
+}
+
+.com_attr {
+  font-size: 0.8em;
+  font-style: italic;
+}
+
+.comment_name{
+  font-weight: 700;
+}
+
+.image_sty{
+  margin-left: 2px;
+  margin-top: 1px;
 }
