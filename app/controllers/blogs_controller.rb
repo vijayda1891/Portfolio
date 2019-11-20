@@ -2,6 +2,7 @@ class BlogsController < ApplicationController
 
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
   layout "blog"
+  before_action :side_bar_topics, except: [:create, :update, :toggle_status, :destroy]
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :edit, :update, :toggle_status]}, site_admin: :all
   
   # GET /blogs
@@ -95,5 +96,9 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :body, :topic_id)
+    end
+
+    def side_bar_topics
+      @side_bar_topics = Topic.no_blogs
     end
 end
