@@ -137,7 +137,7 @@ body {
  margin-right:15px;
  }
 
- #background {
+#background {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -148,9 +148,9 @@ body {
   z-index: -100;
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  background: image-url("cover.jpg") no-repeat;
+ // background: image-url("cover.jpg") no-repeat;
   background-size: cover;
- }
+ }  
 
 .footer_color {
   color: white;
@@ -167,4 +167,17 @@ body {
 
 .tech-news > .card {
   padding: 30px;
+}
+
+.content_card > .card {
+  color: black;
+  text-align: center;
+}
+
+.header_color{
+  color: orange;
+}
+
+.content_card a {
+  color: #0659f5;
 }
