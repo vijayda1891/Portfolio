@@ -18,8 +18,12 @@
   text-decoration: none;
 }
 
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+  font-family: 'Calistoga', cursive;
 }
 
 .display-4 {
@@ -159,4 +163,9 @@ h1, h2, h3, h4, h5, h6 {
 .image_sty{
   margin-left: 2px;
   margin-top: 1px;
+}
+
+.blog_crumb a{
+  font-size: 1.25em;
+  margin: 0px 10px 0px 10px;
 }

@@ -1,13 +1,72 @@
-<h1> About Me </h1>
+<h1 class="header_color"> About Me </h1>
 
 <hr>
 
 <div class="row">
 	<div class="col-md-4">
 		<%= image_tag "profile.jpg", width: 190, alt: "profile image" %>
+
+		<div class="skills">
+			<% @skills.each do |skill| %>
+			<div class="skill">
+				<h4><%= skill.title %></h4>
+				<div class="progress">
+					<div
+						class="progress-bar progress-bar-striped bg-warning"
+						role="progressbar"
+						aria-valuenow="<%= skill.percent_utilized %>"
+						aria-valuemax="100"
+						style="width: <%= skill.percent_utilized %>%"
+					></div>
+				</div>
+			</div>
+			<% end %>
+		</div>
 	</div>
-	<div class="col-md-8">
-		<p>2 years of professional experience in the field of web application development, being part of complete product Life-Cycle. Worked on products involving Retail Point of Sale systems covering catalog/product upload to support Merchants as well as an Exclusive hiring Portal for Teacher and schools. Enjoy challenges. Communnication is my key skill and beleive that it is of prime importance in Software Development </p>
+	<div class="col-md-8 content_card">
+		<div class="card">
+			<p>2 years of professional experience in the field of web application development, being part of complete product Life-Cycle. Worked on products involving Retail Point of Sale systems covering catalog/product upload to support Merchants as well as an Exclusive hiring Portal for Teacher and schools. Enjoy challenges. Communnication is my key skill and beleive that it is of prime importance in Software Development </p>
+
+			<p>
+				<button
+					class="btn btn-primary"
+					type="button"
+					data-toggle="collapse"
+					data-target="#jobsHistory"
+					aria-expand="false"
+					aria-controler="jobsHistory"
+				>
+					Jobs History	
+				</button>
+				<button
+					class="btn btn-primary"
+					type="button"
+					data-toggle="collapse"
+					data-target="#education"
+					aria-expand="false"
+					aria-controler="education"
+				>
+					Education	
+				</button>
+			</p>
+			<p>
+				<div class="collapse" id="jobsHistory">
+					<div class="card card-block">
+						Pacecom Pvt Ltd - Software Developer ( Aug 2017 - Till Date )
+					</div>
+				</div>
+			</p>
+			<p>
+				<div class="collapse" id="education">
+					<div class="card card-block">
+						Msc in Wireless Communication Systems - University Of Sheffield ( Sept 2013 - Jan 2015 )
+					</div>
+					<div class="card card-block">
+						Bsc in Electronics & Communication - Visvesvaraya Technological University ( Sept 2009 - May 2013 )
+					</div>
+				</div>
+			</p>
+		</div>
 	</div>
 </div>
 

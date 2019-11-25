@@ -1,5 +1,6 @@
 <div class="album py-5 bg-light portfolio_form">
 	<div class="container">
+		<%= source_helper("alert alert-warning") %>
 		<% if logged_in?(:site_admin) %>
 		<center><%= link_to 'Add New Portfolio', new_portfol_path, class: "btn btn-primary" %></center>
 		<hr>

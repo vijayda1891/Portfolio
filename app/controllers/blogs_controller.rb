@@ -2,22 +2,30 @@ class BlogsController < ApplicationController
 
   before_action :set_blog, only: [:show, :edit, :update, :destroy, :toggle_status]
   layout "blog"
+  before_action :side_bar_topics, except: [:create, :update, :toggle_status, :destroy]
   access all: [:show, :index], user: {except: [:destroy, :new, :create, :edit, :update, :toggle_status]}, site_admin: :all
   
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.page(params[:page]).per(5)
+    if logged_in?(:site_admin)
+      @blogs = Blog.recent_blogs.page(params[:page]).per(5)
+    else
+      @blogs = Blog.published.recent_blogs.page(params[:page]).per(5)
+    end
     @page_title = "Portfolio | Blogs"
   end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
-    @blog = Blog.includes(:comments).friendly.find(params[:id])
-    @comment = Comment.new
-
-    @page_title = @blog.title
+    if logged_in?(:site_admin) || @blog.published?
+      @blog = Blog.includes(:comments).friendly.find(params[:id])
+      @comment = Comment.new
+      @page_title = @blog.title
+    else
+      redirect_to blogs_path, notice: "You are not Authorized to access this section!"
+    end
   end
 
   # GET /blogs/new
@@ -87,6 +95,10 @@ class BlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
-      params.require(:blog).permit(:title, :body)
+      params.require(:blog).permit(:title, :body, :topic_id, :status)
+    end
+
+    def side_bar_topics
+      @side_bar_topics = Topic.no_blogs
     end
 end
