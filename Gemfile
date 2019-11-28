@@ -81,3 +81,8 @@ gem 'coderay', '~> 1.1', '>= 1.1.2'
 group :development, :test do
   gem 'rspec-rails'
 end
+
+group :test do
+	gem 'database_cleaner', '~> 1.5', '>= 1.5.3'
+	gem 'shoulda', '~> 3.6'
+end
